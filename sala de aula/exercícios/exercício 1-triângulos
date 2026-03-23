@@ -1,0 +1,32 @@
+package main
+import "fmt"
+
+func main() {
+
+    var l1, l2, l3 float64
+
+    fmt.Println("Digite o valor do primeiro lado: ")
+    fmt.Scan(&l1)
+
+    fmt.Println("Digite o valor do segundo lado: ")
+    fmt.Scan(&l2)
+
+    fmt.Println("Digite o valor do terceiro lado: ")
+    fmt.Scan(&l3)
+
+    if l1+l2 > l3 && l1+l3 > l2 && l2+l3 > l1 {
+
+        fmt.Println("É um triângulo")
+
+        if l1 == l2 && l2 == l3 {
+            fmt.Println("O triângulo é equilátero")
+        } else if l1 == l2 || l1 == l3 || l2 == l3 {
+            fmt.Println("O triângulo é isósceles")
+        } else {
+            fmt.Println("O triângulo é escaleno")
+        }
+
+    } else {
+        fmt.Println("Não é um triângulo")
+    }
+}
