@@ -1,0 +1,20 @@
+package main
+
+import "fmt"
+
+func main() {
+    var al, i, nota, soma, media float64
+    
+    fmt.Println("Qual o número de alunos?: ")
+    fmt.Scan(&al)
+    
+    for i = 1; i <= al; i++ {
+        fmt.Println("Digite a nota do aluno N.", i)
+        fmt.Scan(&nota)
+        
+        soma = nota + soma
+        media = soma / i
+        
+    }
+    fmt.Printf("A média dos alunos é %.2f\n", media)
+}
