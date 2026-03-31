@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+func main() {
+	const n = 10
+	var valores [n]float64
+
+	for i := range valores {
+		fmt.Printf("Digite o valor %d: ", i+1)
+		fmt.Scan(&valores[i])
+	}
+
+	fmt.Println("\nValores apresentados em ordem inversa entrada:")
+	for i := len(valores) - 1; i >= 0; i-- {
+		fmt.Printf("%.1f ", valores[i])
+	}
+	fmt.Println()
+}
