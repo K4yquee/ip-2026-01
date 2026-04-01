@@ -1,0 +1,31 @@
+package main
+
+import "fmt"
+
+func main() {
+	var n1, n2, n3 int
+
+	fmt.Println("Digite o valor do 1n: ")
+	fmt.Scan(&n1)
+
+	fmt.Println("Digite o valor do 2n: ")
+	fmt.Scan(&n2)
+
+	fmt.Println("Digite o valor do 3n: ")
+	fmt.Scan(&n3)
+
+	m := maior(n1, n2, n3)
+	fmt.Printf("O maior número é: %d\n", m)
+}
+
+func maior(n1, n2, n3 int) int {
+	maior := n1
+
+	if n2 > maior {
+		maior = n2
+	}
+	if n3 > maior {
+		maior = n3
+	}
+	return maior
+}
