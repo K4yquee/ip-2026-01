@@ -1,0 +1,23 @@
+package main
+
+import "fmt"
+
+func main() {
+	var x, y, z float64
+
+	fmt.Println("Digite o valor de x: ")
+	fmt.Scan(&x)
+
+	fmt.Println("Digite o valor de y: ")
+	fmt.Scan(&y)
+
+	fmt.Println("Digite o valor de z: ")
+	fmt.Scan(&z)
+	m := media(x, y, z)
+	fmt.Printf("A média dos valores %.2f + %.2f + %.2f, é = a %.2f\n", x, y, z, m)
+}
+func media(x, y, z float64) float64 {
+	soma := x + y + z
+	media := soma / 3
+	return media
+}
