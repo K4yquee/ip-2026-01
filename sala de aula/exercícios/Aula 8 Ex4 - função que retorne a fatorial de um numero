@@ -1,0 +1,26 @@
+package main
+
+import "fmt"
+
+func main() {
+	var n int
+
+	fmt.Println("Digite um numero: ")
+	fmt.Scan(&n)
+
+	f := fatorial(n)
+	if f > 0 {
+		fmt.Printf("A fatorial de %d é %d \n", n, f)
+	}
+}
+func fatorial(numero int) int {
+	resultado := 1
+	for i := 1; i <= numero; i++ {
+		resultado = resultado * i
+	}
+	if numero < 0 {
+		fmt.Println("Um numero negativo não possui fatorial")
+		return 0
+	}
+	return resultado
+}
