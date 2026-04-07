@@ -1,0 +1,38 @@
+package main
+
+import "fmt"
+
+type pessoa struct {
+	altura float64
+	nome   string
+	ideal  float64
+	testes int
+}
+
+func main() {
+	var p pessoa
+	var pessoas []pessoa
+
+	fmt.Println("Digite a quantidade de testes: ")
+	fmt.Scan(&p.testes)
+
+	for i := 1; i <= p.testes; i++ {
+		var nova pessoa
+
+		fmt.Println("Digite o seu nome: ")
+		fmt.Scan(&nova.nome)
+
+		fmt.Println("Digite a sua altura: ")
+		fmt.Scan(&nova.altura)
+
+		nova.ideal = (72.7 * nova.altura) - 58
+
+		pessoas = append(pessoas, nova)
+	}
+
+	for i := 0; i < len(pessoas); i++ {
+		fmt.Printf("%s\n o seu peso ideal e %.2f KG\n", pessoas[i].nome, pessoas[i].ideal)
+	}
+
+	fmt.Println("FIM")
+}
