@@ -2,19 +2,25 @@ package main
 
 import "fmt"
 
+func decimalParaBinario(n int) string {
+	if n == 0 {
+		return ""
+	}
+
+	resto := n % 2
+	return decimalParaBinario(n/2) + fmt.Sprint(resto)
+}
+
 func main() {
 	var n int
-	var binario string
-	binario = ""
 
 	fmt.Print("Digite um número decimal: ")
 	fmt.Scan(&n)
 
-	for n > 0 {
-		resto := n % 2
-		binario = fmt.Sprint(resto) + binario
-		n = n / 2
+	if n == 0 {
+		fmt.Println("Binário: 0")
+	} else {
+		binario := decimalParaBinario(n)
+		fmt.Println("Binário:", binario)
 	}
-
-	fmt.Println("Binário:", binario)
 }
