@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Saúde - Cadastro de Paciente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/createPatient.style.css">
+</head>
+<body>
+    <div id="container">
+        <header class="form-header">
+            <span class="header-icon">🩺</span>
+            <h3>Novo Cadastro</h3>
+            <p>Insira seus dados para criar seu prontuário digital</p>
+        </header>
+
+        <form method="POST" action="/create">
+            <div class="input-group">
+                <label for="name">Nome Completo:</label>
+                <input id="name" name="name" placeholder="Digite seu nome completo" type="text" required autocomplete="name">
+            </div>
+            
+            <div class="input-group">
+                <label for="email">E-mail:</label>
+                <input id="email" name="email" placeholder="exemplo@clinica.com" type="email" required autocomplete="email">
+            </div>
+            
+            <div class="input-group">
+                <label for="bornDate">Data de Nascimento:</label>
+                <input id="bornDate" name="birthDate" type="date" required>
+            </div>
+
+            <div class="input-group">
+                <label for="bloodType">Tipo Sanguíneo (Opcional):</label>
+                <input id="bloodType" name="bloodType" placeholder="Ex: A+, O-, AB+" type="text" maxlength="3" oninput="this.value = this.value.toUpperCase().replace(/[^ABO\+\-]/g, '')">
+            </div>
+
+            <div class="input-group">
+                <label for="phone">Telefone de Contato (Opcional):</label>
+                <input id="phone" name="phone" placeholder="Ex: (11) 99999-9999" type="tel" autocomplete="tel" oninput="maskPhone(this)" maxlength="15">
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Senha de Acesso:</label>
+                <input id="password" name="password" placeholder="Crie uma senha segura" type="password" required autocomplete="new-password">
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <span>Registrar</span>
+            </button>
+        </form>
+
+        <a href="/index.html" class="link-back">Voltar ao Portal</a>
+    </div>
+    <script>
+        function maskPhone(input) {
+            let v = input.value.replace(/\D/g, "");
+            if (v.length > 11) v = v.slice(0, 11);
+            if (v.length === 0) {
+                input.value = "";
+            } else if (v.length <= 2) {
+                input.value = "(" + v;
+            } else if (v.length <= 6) {
+                input.value = "(" + v.slice(0, 2) + ") " + v.slice(2);
+            } else if (v.length <= 10) {
+                input.value = "(" + v.slice(0, 2) + ") " + v.slice(2, 6) + "-" + v.slice(6);
+            } else {
+                input.value = "(" + v.slice(0, 2) + ") " + v.slice(2, 7) + "-" + v.slice(7);
+            }
+        }
+    </script>
+</body>
+</html>

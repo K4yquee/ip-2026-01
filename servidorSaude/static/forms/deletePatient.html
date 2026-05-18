@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Saúde - Excluir Prontuário</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/deletePatient.style.css">
+</head>
+<body>
+    <div id="container">
+        <header class="form-header">
+            <span class="header-icon">🗑️</span>
+            <h3>Remover Registro</h3>
+            <p class="warning-text">Aviso: Esta ação é permanente. Todos os seus dados de prontuário correspondentes a este e-mail serão permanentemente apagados.</p>
+        </header>
+
+        <form method="POST" action="/delete">
+            <div class="input-group">
+                <label for="email">E-mail Registrado:</label>
+                <input id="email" name="email" placeholder="Digite seu e-mail" type="email" required autocomplete="email">
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <span>Apagar Prontuário</span>
+            </button>
+        </form>
+
+        <a href="/index.html" class="link-back">Voltar ao Portal</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Saúde - Atualizar Dados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/updatePatient.style.css">
+</head>
+<body>
+    <div id="container">
+        <header class="form-header">
+            <span class="header-icon">✏️</span>
+            <h3>Atualizar Cadastro</h3>
+            <p>Insira seu e-mail de cadastro e as novas informações que deseja alterar</p>
+        </header>
+
+        <form method="POST" action="/update">
+            <div class="input-group highlight">
+                <label for="currentEmail">E-mail do Paciente:</label>
+                <input id="currentEmail" name="currentEmail" placeholder="Digite seu e-mail de cadastro" type="email" required autocomplete="email">
+            </div>
+
+            <div class="input-group">
+                <label for="phone">Novo Telefone:</label>
+                <input id="phone" name="phone" placeholder="Ex: (11) 99999-9999" type="tel" oninput="maskPhone(this)" maxlength="15">
+            </div>
+
+            <div class="input-group">
+                <label for="bloodType">Novo Tipo Sanguíneo:</label>
+                <input id="bloodType" name="bloodType" placeholder="Ex: A+, O-, AB+" type="text" maxlength="3" oninput="this.value = this.value.toUpperCase().replace(/[^ABO\+\-]/g, '')">
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <span>Confirmar Alterações</span>
+            </button>
+        </form>
+
+        <a href="/index.html" class="link-back">Voltar ao Portal</a>
+    </div>
+    <script>
+        function maskPhone(input) {
+            let v = input.value.replace(/\D/g, "");
+            if (v.length > 11) v = v.slice(0, 11);
+            if (v.length === 0) {
+                input.value = "";
+            } else if (v.length <= 2) {
+                input.value = "(" + v;
+            } else if (v.length <= 6) {
+                input.value = "(" + v.slice(0, 2) + ") " + v.slice(2);
+            } else if (v.length <= 10) {
+                input.value = "(" + v.slice(0, 2) + ") " + v.slice(2, 6) + "-" + v.slice(6);
+            } else {
+                input.value = "(" + v.slice(0, 2) + ") " + v.slice(2, 7) + "-" + v.slice(7);
+            }
+        }
+    </script>
+</body>
+</html>

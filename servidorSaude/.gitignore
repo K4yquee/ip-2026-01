@@ -1,0 +1,13 @@
+# Binários compiled
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+
+# Variáveis locais
+.env
+
+# Docker data
+pgdata/
