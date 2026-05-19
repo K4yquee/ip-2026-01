@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="styles/index.style.css">
 </head>
 <body>
-    <main>
+    <main id="container">
         <header class="portal-header">
-            <div class="logo">🩺</div>
-            <h1>Portal Clínica Saúde</h1>
+            <h1>Clínica Saúde</h1>
             <p>Gerenciamento de Prontuários e Pacientes</p>
         </header>
 
@@ -21,28 +20,23 @@
         </div>
 
         <section class="menu-container">
-            <h2 class="menu-title">Acesso Rápido</h2>
-            <nav class="navigation-grid">
+            <nav class="navigation-list">
                 <a href="/forms/createPatient.html" class="menu-card" id="btn-create">
-                    <span class="card-icon">➕</span>
                     <span class="card-title">Novo Paciente</span>
                     <span class="card-desc">Cadastre-se na nossa clínica de saúde</span>
                 </a>
                 
                 <a href="/forms/login.html" class="menu-card" id="btn-login">
-                    <span class="card-icon">🔑</span>
                     <span class="card-title">Acessar Prontuário</span>
                     <span class="card-desc">Faça login para ver seu prontuário digital</span>
                 </a>
                 
                 <a href="/forms/updatePatient.html" class="menu-card" id="btn-update">
-                    <span class="card-icon">✏️</span>
                     <span class="card-title">Atualizar Dados</span>
                     <span class="card-desc">Atualize suas informações de contato</span>
                 </a>
                 
                 <a href="/forms/deletePatient.html" class="menu-card" id="btn-delete">
-                    <span class="card-icon">🗑️</span>
                     <span class="card-title">Apagar Registro</span>
                     <span class="card-desc">Remova seu prontuário do sistema</span>
                 </a>
@@ -60,11 +54,11 @@
             let greeting = "Olá! Seja bem-vindo.";
             
             if (hour >= 5 && hour < 12) {
-                greeting = "☀️ Bom dia! Seja bem-vindo.";
+                greeting = "Bom dia! Seja bem-vindo.";
             } else if (hour >= 12 && hour < 18) {
-                greeting = "🌤️ Boa tarde! Seja bem-vindo.";
+                greeting = "Boa tarde! Seja bem-vindo.";
             } else {
-                greeting = "🌙 Boa noite! Seja bem-vindo.";
+                greeting = "Boa noite! Seja bem-vindo.";
             }
             
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };

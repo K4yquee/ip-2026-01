@@ -15,33 +15,46 @@ const patientUpdatedProfileHTML = `<!DOCTYPE html>
     <title>Clínica Saúde - Prontuário Atualizado</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-gradient: radial-gradient(circle at top right, #fff1f2 0%, #fafafa 70%);
+            --card-bg: rgba(255, 255, 255, 0.88);
+            --border-color: rgba(225, 29, 72, 0.08);
+            --accent-red: #be123c; /* Vermelho carmim profundo, elegante */
+            --accent-glow: #e11d48; /* Vermelho cereja vibrante */
+            --text-primary: #1e293b; /* Slate escuro */
+            --text-secondary: #64748b; /* Slate cinza */
+            --shadow-soft: 0 15px 35px rgba(190, 18, 60, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+            --color-success: #10b981;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Outfit', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0d9488 100%);
+            background: var(--bg-gradient);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #f8fafc;
+            color: var(--text-primary);
             padding: 20px;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-bg);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
             border-radius: 24px;
             padding: 40px;
             width: 100%;
             max-width: 500px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-soft);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -53,50 +66,36 @@ const patientUpdatedProfileHTML = `<!DOCTYPE html>
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .avatar-glow {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #10b981, #059669);
-            margin: 0 auto 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.6);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
         .alert-success {
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.08);
+            border: 2px solid #1e293b;
             border-radius: 12px;
             padding: 12px;
             margin-bottom: 24px;
-            color: #34d399;
+            color: #065f46;
             font-size: 0.9rem;
             font-weight: 600;
+            box-shadow: 3px 3px 0px #1e293b;
         }
 
         h1 {
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 8px;
-            background: linear-gradient(to right, #38bdf8, #34d399);
+            background: linear-gradient(to right, var(--accent-red), var(--accent-glow));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
-            color: #94a3b8;
+            color: var(--text-secondary);
             font-size: 0.95rem;
             margin-bottom: 24px;
         }
 
         .info-card {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #ffffff;
+            border: 2px solid #1e293b;
             border-radius: 16px;
             padding: 24px;
             margin-bottom: 32px;
@@ -104,10 +103,11 @@ const patientUpdatedProfileHTML = `<!DOCTYPE html>
             display: flex;
             flex-direction: column;
             gap: 16px;
+            box-shadow: 4px 4px 0px #1e293b;
         }
 
         .info-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(225, 29, 72, 0.05);
             padding-bottom: 12px;
         }
 
@@ -120,7 +120,7 @@ const patientUpdatedProfileHTML = `<!DOCTYPE html>
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: #34d399;
+            color: var(--accent-red);
             font-weight: 600;
             margin-bottom: 4px;
         }
@@ -128,35 +128,39 @@ const patientUpdatedProfileHTML = `<!DOCTYPE html>
         .info-value {
             font-size: 1.05rem;
             font-weight: 400;
-            color: #e2e8f0;
+            color: var(--text-primary);
         }
 
         .btn-portal {
             display: inline-block;
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
-            border: none;
+            background: linear-gradient(135deg, var(--accent-red) 0%, #9f1239 100%);
+            border: 2px solid #1e293b;
             border-radius: 12px;
             color: white;
             font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 4px 4px 0px #1e293b;
             cursor: pointer;
         }
 
         .btn-portal:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(13, 148, 136, 0.5);
-            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+            transform: translate(-3px, -3px);
+            box-shadow: 7px 7px 0px #1e293b;
+            background: linear-gradient(135deg, var(--accent-glow) 0%, var(--accent-red) 100%);
+        }
+
+        .btn-portal:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #1e293b;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="avatar-glow">✅</div>
         <h1>Prontuário Atualizado</h1>
         <div class="subtitle">Seus dados foram atualizados com sucesso</div>
         
@@ -183,7 +187,7 @@ const patientUpdatedProfileHTML = `<!DOCTYPE html>
             </div>
             <div class="info-item">
                 <div class="info-label">Telefone de Contato</div>
-                <div class="info-value{{if .Phone}}{{.Phone}}{{else}}Não informado{{end}}"></div>
+                <div class="info-value">{{if .Phone}}{{.Phone}}{{else}}Não informado{{end}}</div>
             </div>
             <div class="info-item">
                 <div class="info-label">Data de Registro no Sistema</div>

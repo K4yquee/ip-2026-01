@@ -6,7 +6,7 @@ Este projeto é um servidor HTTP robusto desenvolvido em **GoLang** que permite 
 
 ## 🚀 Diferenciais de Segurança e UX
 *   **Criptografia Bcrypt**: Diferente do MD5 básico, este servidor utiliza o algoritmo de segurança industrial **Bcrypt** para realizar o hashing e a validação de senhas dos pacientes, protegendo contra ataques de força bruta e colisões.
-*   **Inicialização Automática do Banco**: O próprio servidor Go se conecta ao seu PostgreSQL local e, de forma 100% autônoma, cria o banco de dados `clinica` e a tabela `patients` no primeiro boot, dispensando setups manuais exaustivos.
+*   **Controle Manual do Esquema de Banco**: Maior controle e segurança operacional, delegando a criação do banco de dados `clinica` e da tabela `patients` ao administrador através de comandos SQL simples e diretos antes de subir o servidor.
 *   **Design Clínico Hospitalar Premium (Vanilla CSS)**: Interfaces modernas e exclusivas em tons sofisticados de vermelho carmim e branco, conceitos elegantes de *glassmorphism* leve e total responsividade para dispositivos móveis e desktops.
 
 ---
@@ -86,20 +86,27 @@ DB_PORT=5432
 ```
 
 ### 3. Banco de Dados (PostgreSQL)
-A tabela será criada automaticamente pelo servidor Go! O comando SQL executado de forma interna para estruturar os dados clínicos é:
 
-```sql
-CREATE TABLE patients(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(150) UNIQUE NOT NULL,
-    birth_date DATE NOT NULL,
-    blood_type VARCHAR(3),
-    phone VARCHAR(20),
-    password VARCHAR(255),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
+Antes de iniciar o servidor Go, você precisa criar manualmente o banco de dados e a tabela dos pacientes no seu PostgreSQL:
+
+1. Abra o terminal do seu PostgreSQL (`psql`) ou acesse a ferramenta gráfica (como o **pgAdmin**) e crie o banco de dados do projeto:
+   ```sql
+   CREATE DATABASE clinica;
+   ```
+
+2. Conecte-se à base de dados recém-criada (`\c clinica` no console do `psql`) e execute o script SQL abaixo para estruturar a tabela `patients`:
+   ```sql
+   CREATE TABLE patients(
+       id SERIAL PRIMARY KEY,
+       name VARCHAR(100) NOT NULL,
+       email VARCHAR(150) UNIQUE NOT NULL,
+       birth_date DATE NOT NULL,
+       blood_type VARCHAR(3),
+       phone VARCHAR(20),
+       password VARCHAR(255),
+       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   );
+   ```
 
 ### 4. Instalar Dependências e Iniciar o Servidor
 No diretório raiz do projeto, execute os comandos no terminal:

@@ -126,15 +126,15 @@ form {
 
 .btn-submit {
     background: linear-gradient(135deg, var(--accent-red) 0%, #9f1239 100%);
-    border: none;
+    border: 2px solid #1e293b;
     padding: 14px;
     border-radius: 12px;
     color: white;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(190, 18, 60, 0.2);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 4px 0px #1e293b;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     margin-top: 0.5rem;
     display: flex;
     align-items: center;
@@ -142,25 +142,39 @@ form {
 }
 
 .btn-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(190, 18, 60, 0.35);
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px #1e293b;
     background: linear-gradient(135deg, var(--accent-glow) 0%, var(--accent-red) 100%);
 }
 
 .btn-submit:active {
-    transform: translateY(0);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #1e293b;
 }
 
 .link-back {
-    color: var(--text-secondary);
-    font-size: 0.85rem;
+    display: inline-block;
+    border: 2px solid #1e293b;
+    background: #ffffff;
+    color: var(--text-primary);
+    padding: 10px 20px;
+    border-radius: 12px;
     text-decoration: none;
-    transition: all 0.3s ease;
-    border-bottom: 1px dashed rgba(100, 116, 139, 0.4);
-    padding-bottom: 2px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    box-shadow: 3px 3px 0px #1e293b;
+    transition: all 0.2s ease-in-out;
+    margin-top: 0.5rem;
 }
 
 .link-back:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #1e293b;
+    background: #fff1f2;
     color: var(--accent-red);
-    border-color: var(--accent-red);
+}
+
+.link-back:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0px #1e293b;
 }
